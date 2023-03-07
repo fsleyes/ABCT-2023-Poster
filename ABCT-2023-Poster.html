@@ -358,12 +358,12 @@ display: none;
 <p>specifying the model</p>
 <pre class="r"><code>#covariates: DASS, PANAS NA, RACE, GENDER, CONDITION
 model &lt;- &#39;
-  MID_UPPS_NegativeUrgency_Total ~ 1 + T1_DTS_Total + MID_DASS_Total + T6_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  T6_DTS_Total ~ 1 + PRE_UPPS_NegativeUrgency_Total + MID_DASS_Total + T6_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  POST_UPPS_NegativeUrgency_Total ~ 1 + T6_DTS_Total + POST_DASS_Total + POST_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  POST_DTS_Total ~ 1 + MID_UPPS_NegativeUrgency_Total + POST_DASS_Total + POST_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  FU_UPPS_NegativeUrgency_Total ~ 1 + POST_DTS_Total + FU_DASS_Total + FU_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  FU_DTS_Total ~ 1 + POST_UPPS_NegativeUrgency_Total + FU_DASS_Total + FU_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
+  MID_UPPS_NegativeUrgency_Total ~ 1 + T1_DTS_Total + MID_DASS_Total + T6_PANAS_NA_Total + PRE_UPPS_NegativeUrgency_Total + DEMO_Race + DEMO_Gender + Condition
+  T6_DTS_Total ~ 1 + PRE_UPPS_NegativeUrgency_Total + MID_DASS_Total + T6_PANAS_NA_Total + T1_DTS_Total + DEMO_Race + DEMO_Gender + Condition
+  POST_UPPS_NegativeUrgency_Total ~ 1 + T6_DTS_Total + POST_DASS_Total + POST_PANAS_NA_Total + MID_UPPS_NegativeUrgency_Total + DEMO_Race + DEMO_Gender + Condition
+  POST_DTS_Total ~ 1 + MID_UPPS_NegativeUrgency_Total + POST_DASS_Total + POST_PANAS_NA_Total + T6_DTS_Total + DEMO_Race + DEMO_Gender + Condition
+  FU_UPPS_NegativeUrgency_Total ~ 1 + POST_DTS_Total + FU_DASS_Total + FU_PANAS_NA_Total + POST_UPPS_NegativeUrgency_Total + DEMO_Race + DEMO_Gender + Condition
+  FU_DTS_Total ~ 1 + POST_UPPS_NegativeUrgency_Total + FU_DASS_Total + FU_PANAS_NA_Total + POST_DTS_Total + DEMO_Race + DEMO_Gender + Condition
   PRE_UPPS_NegativeUrgency_Total ~~ T1_DTS_Total
   MID_UPPS_NegativeUrgency_Total ~~ T6_DTS_Total
   POST_UPPS_NegativeUrgency_Total ~~ POST_DTS_Total
@@ -383,19 +383,19 @@ model &lt;- &#39;
 ##     moments using EM; use the em.h1.iter.max= argument to increase the
 ##     number of iterations</code></pre>
 <pre class="r"><code>summary(fitModel, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-12 ended normally after 222 iterations
+<pre><code>## lavaan 0.6-12 ended normally after 211 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
-##   Number of model parameters                        56
+##   Number of model parameters                        62
 ## 
 ##   Number of observations                            52
 ##   Number of missing patterns                        15
 ## 
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                               343.882
-##   Degrees of freedom                                60
+##   Test statistic                               282.041
+##   Degrees of freedom                                54
 ##   P-value (Chi-square)                           0.000
 ## 
 ## Model Test Baseline Model:
@@ -406,28 +406,28 @@ model &lt;- &#39;
 ## 
 ## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.157
-##   Tucker-Lewis Index (TLI)                      -0.404
+##   Comparative Fit Index (CFI)                    0.323
+##   Tucker-Lewis Index (TLI)                      -0.253
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)               -242.551
+##   Loglikelihood user model (H0)               -211.630
 ##   Loglikelihood unrestricted model (H1)             NA
 ##                                                       
-##   Akaike (AIC)                                 597.102
-##   Bayesian (BIC)                               706.372
-##   Sample-size adjusted Bayesian (BIC)          530.514
+##   Akaike (AIC)                                 547.261
+##   Bayesian (BIC)                               668.238
+##   Sample-size adjusted Bayesian (BIC)          473.538
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.302
-##   90 Percent confidence interval - lower         0.271
-##   90 Percent confidence interval - upper         0.333
+##   RMSEA                                          0.285
+##   90 Percent confidence interval - lower         0.253
+##   90 Percent confidence interval - upper         0.318
 ##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.200
+##   SRMR                                           0.144
 ## 
 ## Parameter Estimates:
 ## 
@@ -438,92 +438,98 @@ model &lt;- &#39;
 ## Regressions:
 ##                                     Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   MID_UPPS_NegativeUrgency_Total ~                                     
-##     T1_DTS_Total                      -0.121    0.121   -1.002    0.316
-##     MID_DASS_Total                     0.094    0.059    1.597    0.110
-##     T6_PANAS_NA_Tt                     0.016    0.124    0.126    0.900
-##     DEMO_Race                          0.008    0.409    0.018    0.985
-##     DEMO_Gender                        0.663    1.863    0.356    0.722
-##     Condition                          0.738    1.873    0.394    0.694
+##     T1_DTS_Total                      -0.033    0.095   -0.349    0.727
+##     MID_DASS_Total                     0.053    0.047    1.131    0.258
+##     T6_PANAS_NA_Tt                    -0.004    0.093   -0.045    0.964
+##     PRE_UPPS_NgU_T                     0.557    0.147    3.782    0.000
+##     DEMO_Race                          0.145    0.330    0.439    0.661
+##     DEMO_Gender                        1.888    1.520    1.242    0.214
+##     Condition                          1.150    1.448    0.794    0.427
 ##   T6_DTS_Total ~                                                       
-##     PRE_UPPS_NgU_T                    -0.559    0.291   -1.920    0.055
-##     MID_DASS_Total                    -0.002    0.108   -0.016    0.987
-##     T6_PANAS_NA_Tt                    -0.562    0.186   -3.020    0.003
-##     DEMO_Race                         -0.162    0.580   -0.279    0.780
-##     DEMO_Gender                       -1.101    3.200   -0.344    0.731
-##     Condition                         -6.956    2.687   -2.589    0.010
+##     PRE_UPPS_NgU_T                    -0.461    0.270   -1.705    0.088
+##     MID_DASS_Total                    -0.032    0.103   -0.307    0.759
+##     T6_PANAS_NA_Tt                    -0.482    0.183   -2.633    0.008
+##     T1_DTS_Total                       0.237    0.161    1.473    0.141
+##     DEMO_Race                         -0.444    0.579   -0.767    0.443
+##     DEMO_Gender                       -0.406    2.990   -0.136    0.892
+##     Condition                         -5.984    2.609   -2.294    0.022
 ##   POST_UPPS_NegativeUrgency_Total ~                                    
-##     T6_DTS_Total                       0.069    0.123    0.561    0.575
-##     POST_DASS_Totl                     0.101    0.048    2.084    0.037
-##     POST_PANAS_NA_                     0.131    0.171    0.769    0.442
-##     DEMO_Race                         -0.005    0.367   -0.013    0.990
-##     DEMO_Gender                       -2.688    1.589   -1.691    0.091
-##     Condition                          1.872    1.659    1.128    0.259
+##     T6_DTS_Total                      -0.024    0.063   -0.378    0.705
+##     POST_DASS_Totl                     0.058    0.038    1.530    0.126
+##     POST_PANAS_NA_                     0.067    0.119    0.561    0.574
+##     MID_UPPS_NgU_T                     0.492    0.133    3.707    0.000
+##     DEMO_Race                          0.183    0.263    0.694    0.488
+##     DEMO_Gender                       -2.434    1.167   -2.085    0.037
+##     Condition                          0.865    1.143    0.756    0.449
 ##   POST_DTS_Total ~                                                     
-##     MID_UPPS_NgU_T                     0.280    0.536    0.522    0.601
-##     POST_DASS_Totl                    -0.370    0.116   -3.195    0.001
-##     POST_PANAS_NA_                    -0.117    0.313   -0.375    0.708
-##     DEMO_Race                         -0.851    0.752   -1.132    0.258
-##     DEMO_Gender                        0.117    3.228    0.036    0.971
-##     Condition                         -7.869    3.123   -2.519    0.012
+##     MID_UPPS_NgU_T                     0.056    0.242    0.233    0.815
+##     POST_DASS_Totl                    -0.322    0.067   -4.793    0.000
+##     POST_PANAS_NA_                     0.214    0.214    1.001    0.317
+##     T6_DTS_Total                       0.587    0.114    5.140    0.000
+##     DEMO_Race                         -1.242    0.482   -2.578    0.010
+##     DEMO_Gender                       -1.878    2.095   -0.896    0.370
+##     Condition                         -4.001    2.085   -1.919    0.055
 ##   FU_UPPS_NegativeUrgency_Total ~                                      
-##     POST_DTS_Total                    -0.107    0.189   -0.565    0.572
-##     FU_DASS_Total                     -0.012    0.160   -0.073    0.942
-##     FU_PANAS_NA_Tt                     0.316    0.295    1.068    0.286
-##     DEMO_Race                         -0.455    0.576   -0.789    0.430
-##     DEMO_Gender                        0.349    2.438    0.143    0.886
-##     Condition                          4.322    2.750    1.572    0.116
+##     POST_DTS_Total                     0.051    0.180    0.282    0.778
+##     FU_DASS_Total                      0.002    0.133    0.013    0.989
+##     FU_PANAS_NA_Tt                     0.190    0.266    0.717    0.473
+##     POST_UPPS_NU_T                     0.823    0.326    2.521    0.012
+##     DEMO_Race                         -0.186    0.531   -0.350    0.726
+##     DEMO_Gender                        1.162    2.116    0.549    0.583
+##     Condition                          4.213    2.276    1.851    0.064
 ##   FU_DTS_Total ~                                                       
-##     POST_UPPS_NU_T                    -0.796    0.529   -1.504    0.133
-##     FU_DASS_Total                     -0.141    0.175   -0.804    0.421
-##     FU_PANAS_NA_Tt                    -0.220    0.400   -0.550    0.583
-##     DEMO_Race                         -0.527    0.828   -0.637    0.524
-##     DEMO_Gender                       -6.036    3.707   -1.628    0.104
-##     Condition                         -4.051    3.781   -1.071    0.284
+##     POST_UPPS_NU_T                    -0.537    0.503   -1.068    0.285
+##     FU_DASS_Total                      0.180    0.197    0.911    0.362
+##     FU_PANAS_NA_Tt                    -0.631    0.399   -1.583    0.113
+##     POST_DTS_Total                     0.569    0.270    2.103    0.035
+##     DEMO_Race                          0.275    0.827    0.333    0.739
+##     DEMO_Gender                       -4.684    3.289   -1.424    0.154
+##     Condition                         -0.331    3.525   -0.094    0.925
 ## 
 ## Covariances:
 ##                                      Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   T1_DTS_Total ~~                                                       
-##     PRE_UPPS_NgU_T                    -27.333    9.083   -3.009    0.003
+##     PRE_UPPS_NgU_T                    -26.772    9.055   -2.957    0.003
 ##  .MID_UPPS_NegativeUrgency_Total ~~                                     
-##    .T6_DTS_Total                        1.659    8.332    0.199    0.842
+##    .T6_DTS_Total                       -2.617    5.422   -0.483    0.629
 ##  .POST_UPPS_NegativeUrgency_Total ~~                                    
-##    .POST_DTS_Total                    -17.370   12.574   -1.381    0.167
+##    .POST_DTS_Total                     -6.478    3.019   -2.146    0.032
 ##  .FU_UPPS_NegativeUrgency_Total ~~                                      
-##    .FU_DTS_Total                      -20.988   14.969   -1.402    0.161
+##    .FU_DTS_Total                      -17.326    7.900   -2.193    0.028
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##    .MID_UPPS_NgU_T   31.717    6.966    4.553    0.000
-##    .T6_DTS_Total     82.173   11.336    7.249    0.000
-##    .POST_UPPS_NU_T   19.640    7.869    2.496    0.013
-##    .POST_DTS_Total   63.876   16.905    3.779    0.000
-##    .FU_UPPS_NgtU_T   24.089   13.367    1.802    0.072
-##    .FU_DTS_Total     88.747   14.586    6.084    0.000
-##     T1_DTS_Total     34.167    1.329   25.707    0.000
-##     PRE_UPPS_NgU_T   36.310    0.865   41.966    0.000
+##    .MID_UPPS_NgU_T    8.682    7.956    1.091    0.275
+##    .T6_DTS_Total     68.784   13.658    5.036    0.000
+##    .POST_UPPS_NU_T   10.896    6.411    1.699    0.089
+##    .POST_DTS_Total   36.987   11.855    3.120    0.002
+##    .FU_UPPS_NgtU_T   -5.890   18.533   -0.318    0.751
+##    .FU_DTS_Total     44.593   28.415    1.569    0.117
+##     T1_DTS_Total     34.221    1.329   25.743    0.000
+##     PRE_UPPS_NgU_T   36.338    0.862   42.176    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##    .MID_UPPS_NgU_T   19.520    5.323    3.667    0.000
-##    .T6_DTS_Total     58.755   14.361    4.091    0.000
-##    .POST_UPPS_NU_T   14.147    5.136    2.754    0.006
-##    .POST_DTS_Total   59.265   20.876    2.839    0.005
-##    .FU_UPPS_NgtU_T   28.485    9.497    2.999    0.003
-##    .FU_DTS_Total     65.795   22.125    2.974    0.003
-##     T1_DTS_Total     82.906   17.117    4.843    0.000
-##     PRE_UPPS_NgU_T   36.387    7.502    4.850    0.000</code></pre>
+##    .MID_UPPS_NgU_T   12.729    3.349    3.801    0.000
+##    .T6_DTS_Total     54.329   13.279    4.091    0.000
+##    .POST_UPPS_NU_T    7.428    2.114    3.514    0.000
+##    .POST_DTS_Total   24.650    6.934    3.555    0.000
+##    .FU_UPPS_NgtU_T   20.532    6.321    3.248    0.001
+##    .FU_DTS_Total     48.689   14.961    3.254    0.001
+##     T1_DTS_Total     83.044   17.166    4.838    0.000
+##     PRE_UPPS_NgU_T   36.073    7.399    4.875    0.000</code></pre>
 <p>we can see that the only one that’s marginally significant would be
 the UPPS at pre predicting DTS at mid</p>
 <p>BUT now if we constrain the PANAS and DASS controls to average out
 the effect across timepoints…</p>
 <pre class="r"><code>#constrained model
 consmodel &lt;- &#39;
-  MID_UPPS_NegativeUrgency_Total ~ 1 + T1_DTS_Total + a*MID_DASS_Total + b*T6_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  T6_DTS_Total ~ 1 + PRE_UPPS_NegativeUrgency_Total + a*MID_DASS_Total + b*T6_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  POST_UPPS_NegativeUrgency_Total ~ 1 + T6_DTS_Total + a*POST_DASS_Total + b*POST_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  POST_DTS_Total ~ 1 + MID_UPPS_NegativeUrgency_Total + a*POST_DASS_Total + b*POST_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  FU_UPPS_NegativeUrgency_Total ~ 1 + POST_DTS_Total + a*FU_DASS_Total + b*FU_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  FU_DTS_Total ~ 1 + POST_UPPS_NegativeUrgency_Total + a*FU_DASS_Total + b*FU_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
+  MID_UPPS_NegativeUrgency_Total ~ 1 + T1_DTS_Total + a*MID_DASS_Total + b*T6_PANAS_NA_Total + + PRE_UPPS_NegativeUrgency_Total + DEMO_Race + DEMO_Gender + Condition
+  T6_DTS_Total ~ 1 + PRE_UPPS_NegativeUrgency_Total + a*MID_DASS_Total + b*T6_PANAS_NA_Total + T1_DTS_Total + DEMO_Race + DEMO_Gender + Condition
+  POST_UPPS_NegativeUrgency_Total ~ 1 + T6_DTS_Total + a*POST_DASS_Total + b*POST_PANAS_NA_Total + MID_UPPS_NegativeUrgency_Total + DEMO_Race + DEMO_Gender + Condition
+  POST_DTS_Total ~ 1 + MID_UPPS_NegativeUrgency_Total + a*POST_DASS_Total + b*POST_PANAS_NA_Total + T6_DTS_Total + DEMO_Race + DEMO_Gender + Condition
+  FU_UPPS_NegativeUrgency_Total ~ 1 + POST_DTS_Total + a*FU_DASS_Total + b*FU_PANAS_NA_Total + POST_UPPS_NegativeUrgency_Total + DEMO_Race + DEMO_Gender + Condition
+  FU_DTS_Total ~ 1 + POST_UPPS_NegativeUrgency_Total + a*FU_DASS_Total + b*FU_PANAS_NA_Total + POST_DTS_Total + DEMO_Race + DEMO_Gender + Condition
   PRE_UPPS_NegativeUrgency_Total ~~ T1_DTS_Total
   MID_UPPS_NegativeUrgency_Total ~~ T6_DTS_Total
   POST_UPPS_NegativeUrgency_Total ~~ POST_DTS_Total
@@ -544,11 +550,11 @@ mid</p>
 ##     moments using EM; use the em.h1.iter.max= argument to increase the
 ##     number of iterations</code></pre>
 <pre class="r"><code>summary(fitConsmodel, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6-12 ended normally after 236 iterations
+<pre><code>## lavaan 0.6-12 ended normally after 213 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
-##   Number of model parameters                        56
+##   Number of model parameters                        62
 ##   Number of equality constraints                    10
 ## 
 ##   Number of observations                            52
@@ -556,8 +562,8 @@ mid</p>
 ## 
 ## Model Test User Model:
 ##                                                       
-##   Test statistic                               384.211
-##   Degrees of freedom                                70
+##   Test statistic                               319.055
+##   Degrees of freedom                                64
 ##   P-value (Chi-square)                           0.000
 ## 
 ## Model Test Baseline Model:
@@ -568,28 +574,28 @@ mid</p>
 ## 
 ## User Model versus Baseline Model:
 ## 
-##   Comparative Fit Index (CFI)                    0.067
-##   Tucker-Lewis Index (TLI)                      -0.332
+##   Comparative Fit Index (CFI)                    0.243
+##   Tucker-Lewis Index (TLI)                      -0.183
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
-##   Loglikelihood user model (H0)               -262.715
+##   Loglikelihood user model (H0)               -230.138
 ##   Loglikelihood unrestricted model (H1)             NA
 ##                                                       
-##   Akaike (AIC)                                 617.430
-##   Bayesian (BIC)                               707.188
-##   Sample-size adjusted Bayesian (BIC)          562.733
+##   Akaike (AIC)                                 564.275
+##   Bayesian (BIC)                               665.740
+##   Sample-size adjusted Bayesian (BIC)          502.444
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
-##   RMSEA                                          0.294
-##   90 Percent confidence interval - lower         0.265
-##   90 Percent confidence interval - upper         0.323
+##   RMSEA                                          0.277
+##   90 Percent confidence interval - lower         0.247
+##   90 Percent confidence interval - upper         0.307
 ##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
-##   SRMR                                           0.254
+##   SRMR                                           0.183
 ## 
 ## Parameter Estimates:
 ## 
@@ -600,80 +606,86 @@ mid</p>
 ## Regressions:
 ##                                     Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   MID_UPPS_NegativeUrgency_Total ~                                     
-##     T1_DTS_Ttl                        -0.179    0.123   -1.459    0.145
-##     MID_DASS_T (a)                    -0.011    0.035   -0.312    0.755
-##     T6_PANAS_N (b)                     0.008    0.077    0.101    0.919
-##     DEMO_Race                          0.018    0.440    0.041    0.967
-##     DEMO_Gendr                         1.654    1.913    0.865    0.387
-##     Condition                          0.245    1.977    0.124    0.901
+##     T1_DTS_Ttl                        -0.039    0.095   -0.409    0.683
+##     MID_DASS_T (a)                    -0.008    0.026   -0.312    0.755
+##     T6_PANAS_N (b)                    -0.007    0.058   -0.117    0.907
+##     PRE_UPPS_N                         0.622    0.151    4.127    0.000
+##     DEMO_Race                          0.094    0.340    0.275    0.783
+##     DEMO_Gendr                         2.934    1.509    1.944    0.052
+##     Condition                          1.285    1.491    0.862    0.389
 ##   T6_DTS_Total ~                                                       
-##     PRE_UPPS_N                        -0.963    0.331   -2.906    0.004
-##     MID_DASS_T (a)                    -0.011    0.035   -0.312    0.755
-##     T6_PANAS_N (b)                     0.008    0.077    0.101    0.919
-##     DEMO_Race                         -0.124    0.681   -0.182    0.856
-##     DEMO_Gendr                        -1.583    3.375   -0.469    0.639
-##     Condition                         -6.090    3.166   -1.924    0.054
+##     PRE_UPPS_N                        -0.768    0.291   -2.643    0.008
+##     MID_DASS_T (a)                    -0.008    0.026   -0.312    0.755
+##     T6_PANAS_N (b)                    -0.007    0.058   -0.117    0.907
+##     T1_DTS_Ttl                         0.355    0.178    1.999    0.046
+##     DEMO_Race                         -0.443    0.658   -0.673    0.501
+##     DEMO_Gendr                        -1.817    3.072   -0.591    0.554
+##     Condition                         -5.609    2.976   -1.885    0.059
 ##   POST_UPPS_NegativeUrgency_Total ~                                    
-##     T6_DTS_Ttl                         0.062    0.096    0.647    0.518
-##     POST_DASS_ (a)                    -0.011    0.035   -0.312    0.755
-##     POST_PANAS (b)                     0.008    0.077    0.101    0.919
-##     DEMO_Race                          0.097    0.437    0.221    0.825
-##     DEMO_Gendr                        -1.645    1.885   -0.873    0.383
-##     Condition                          2.538    1.953    1.300    0.194
+##     T6_DTS_Ttl                        -0.072    0.067   -1.074    0.283
+##     POST_DASS_ (a)                    -0.008    0.026   -0.312    0.755
+##     POST_PANAS (b)                    -0.007    0.058   -0.117    0.907
+##     MID_UPPS_N                         0.587    0.145    4.056    0.000
+##     DEMO_Race                          0.277    0.289    0.958    0.338
+##     DEMO_Gendr                        -1.832    1.297   -1.413    0.158
+##     Condition                          0.850    1.290    0.659    0.510
 ##   POST_DTS_Total ~                                                     
-##     MID_UPPS_N                         0.363    0.502    0.723    0.470
-##     POST_DASS_ (a)                    -0.011    0.035   -0.312    0.755
-##     POST_PANAS (b)                     0.008    0.077    0.101    0.919
-##     DEMO_Race                         -1.039    1.056   -0.984    0.325
-##     DEMO_Gendr                        -2.613    4.527   -0.577    0.564
-##     Condition                        -10.061    4.398   -2.287    0.022
+##     MID_UPPS_N                        -0.319    0.345   -0.925    0.355
+##     POST_DASS_ (a)                    -0.008    0.026   -0.312    0.755
+##     POST_PANAS (b)                    -0.007    0.058   -0.117    0.907
+##     T6_DTS_Ttl                         0.649    0.152    4.280    0.000
+##     DEMO_Race                         -1.381    0.672   -2.056    0.040
+##     DEMO_Gendr                        -2.967    2.940   -1.009    0.313
+##     Condition                         -4.597    3.000   -1.533    0.125
 ##   FU_UPPS_NegativeUrgency_Total ~                                      
-##     POST_DTS_T                        -0.063    0.167   -0.377    0.706
-##     FU_DASS_Tt (a)                    -0.011    0.035   -0.312    0.755
-##     FU_PANAS_N (b)                     0.008    0.077    0.101    0.919
-##     DEMO_Race                         -0.257    0.621   -0.414    0.679
-##     DEMO_Gendr                         0.737    2.563    0.287    0.774
-##     Condition                          5.972    2.770    2.156    0.031
+##     POST_DTS_T                         0.057    0.143    0.400    0.689
+##     FU_DASS_Tt (a)                    -0.008    0.026   -0.312    0.755
+##     FU_PANAS_N (b)                    -0.007    0.058   -0.117    0.907
+##     POST_UPPS_                         0.909    0.319    2.852    0.004
+##     DEMO_Race                         -0.066    0.547   -0.120    0.905
+##     DEMO_Gendr                         1.478    2.110    0.700    0.484
+##     Condition                          5.008    2.192    2.284    0.022
 ##   FU_DTS_Total ~                                                       
-##     POST_UPPS_                        -0.781    0.583   -1.340    0.180
-##     FU_DASS_Tt (a)                    -0.011    0.035   -0.312    0.755
-##     FU_PANAS_N (b)                     0.008    0.077    0.101    0.919
-##     DEMO_Race                         -0.790    0.881   -0.896    0.370
-##     DEMO_Gendr                        -6.151    3.944   -1.559    0.119
-##     Condition                         -6.003    3.965   -1.514    0.130
+##     POST_UPPS_                        -0.810    0.499   -1.623    0.105
+##     FU_DASS_Tt (a)                    -0.008    0.026   -0.312    0.755
+##     FU_PANAS_N (b)                    -0.007    0.058   -0.117    0.907
+##     POST_DTS_T                         0.393    0.220    1.783    0.075
+##     DEMO_Race                          0.008    0.864    0.010    0.992
+##     DEMO_Gendr                        -6.025    3.353   -1.797    0.072
+##     Condition                         -2.488    3.471   -0.717    0.473
 ## 
 ## Covariances:
 ##                                      Estimate  Std.Err  z-value  P(&gt;|z|)
 ##   T1_DTS_Total ~~                                                       
-##     PRE_UPPS_NgU_T                    -26.317    8.939   -2.944    0.003
+##     PRE_UPPS_NgU_T                    -25.646    8.936   -2.870    0.004
 ##  .MID_UPPS_NegativeUrgency_Total ~~                                     
-##    .T6_DTS_Total                        3.918   11.361    0.345    0.730
+##    .T6_DTS_Total                       -5.440    6.847   -0.795    0.427
 ##  .POST_UPPS_NegativeUrgency_Total ~~                                    
-##    .POST_DTS_Total                    -39.502   18.803   -2.101    0.036
+##    .POST_DTS_Total                    -12.925    5.579   -2.317    0.021
 ##  .FU_UPPS_NegativeUrgency_Total ~~                                      
-##    .FU_DTS_Total                      -29.148   19.256   -1.514    0.130
+##    .FU_DTS_Total                      -20.223    8.928   -2.265    0.024
 ## 
 ## Intercepts:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##    .MID_UPPS_NgU_T   37.950    5.868    6.467    0.000
-##    .T6_DTS_Total     82.614   13.818    5.979    0.000
-##    .POST_UPPS_NU_T   24.859    5.705    4.357    0.000
-##    .POST_DTS_Total   50.102   17.700    2.831    0.005
-##    .FU_UPPS_NgtU_T   24.922   10.572    2.357    0.018
-##    .FU_DTS_Total     82.874   17.268    4.799    0.000
-##     T1_DTS_Total     34.183    1.330   25.704    0.000
-##     PRE_UPPS_NgU_T   36.348    0.855   42.534    0.000
+##    .MID_UPPS_NgU_T    8.365    8.000    1.046    0.296
+##    .T6_DTS_Total     63.658   15.045    4.231    0.000
+##    .POST_UPPS_NU_T   13.040    6.608    1.973    0.048
+##    .POST_DTS_Total   41.418   15.767    2.627    0.009
+##    .FU_UPPS_NgtU_T   -6.179   16.080   -0.384    0.701
+##    .FU_DTS_Total     59.660   25.035    2.383    0.017
+##     T1_DTS_Total     34.246    1.330   25.752    0.000
+##     PRE_UPPS_NgU_T   36.379    0.854   42.622    0.000
 ## 
 ## Variances:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
-##    .MID_UPPS_NgU_T   23.200    6.579    3.526    0.000
-##    .T6_DTS_Total     81.687   20.697    3.947    0.000
-##    .POST_UPPS_NU_T   21.673    8.534    2.540    0.011
-##    .POST_DTS_Total  123.150   41.506    2.967    0.003
-##    .FU_UPPS_NgtU_T   33.745   11.629    2.902    0.004
-##    .FU_DTS_Total     77.327   28.580    2.706    0.007
-##     T1_DTS_Total     82.967   17.141    4.840    0.000
-##     PRE_UPPS_NgU_T   35.726    7.266    4.917    0.000</code></pre>
+##    .MID_UPPS_NgU_T   13.972    3.779    3.697    0.000
+##    .T6_DTS_Total     71.578   18.213    3.930    0.000
+##    .POST_UPPS_NU_T    9.436    2.993    3.153    0.002
+##    .POST_DTS_Total   51.192   15.052    3.401    0.001
+##    .FU_UPPS_NgtU_T   22.157    6.910    3.206    0.001
+##    .FU_DTS_Total     55.644   17.143    3.246    0.001
+##     T1_DTS_Total     83.143   17.197    4.835    0.000
+##     PRE_UPPS_NgU_T   35.555    7.209    4.932    0.000</code></pre>
 
 
 

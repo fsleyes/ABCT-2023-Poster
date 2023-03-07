@@ -56,12 +56,12 @@ specifying the model
 ```{r}
 #covariates: DASS, PANAS NA, RACE, GENDER, CONDITION
 model <- '
-  MID_UPPS_NegativeUrgency_Total ~ 1 + T1_DTS_Total + MID_DASS_Total + T6_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  T6_DTS_Total ~ 1 + PRE_UPPS_NegativeUrgency_Total + MID_DASS_Total + T6_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  POST_UPPS_NegativeUrgency_Total ~ 1 + T6_DTS_Total + POST_DASS_Total + POST_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  POST_DTS_Total ~ 1 + MID_UPPS_NegativeUrgency_Total + POST_DASS_Total + POST_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  FU_UPPS_NegativeUrgency_Total ~ 1 + POST_DTS_Total + FU_DASS_Total + FU_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  FU_DTS_Total ~ 1 + POST_UPPS_NegativeUrgency_Total + FU_DASS_Total + FU_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
+  MID_UPPS_NegativeUrgency_Total ~ 1 + T1_DTS_Total + MID_DASS_Total + T6_PANAS_NA_Total + PRE_UPPS_NegativeUrgency_Total + DEMO_Race + DEMO_Gender + Condition
+  T6_DTS_Total ~ 1 + PRE_UPPS_NegativeUrgency_Total + MID_DASS_Total + T6_PANAS_NA_Total + T1_DTS_Total + DEMO_Race + DEMO_Gender + Condition
+  POST_UPPS_NegativeUrgency_Total ~ 1 + T6_DTS_Total + POST_DASS_Total + POST_PANAS_NA_Total + MID_UPPS_NegativeUrgency_Total + DEMO_Race + DEMO_Gender + Condition
+  POST_DTS_Total ~ 1 + MID_UPPS_NegativeUrgency_Total + POST_DASS_Total + POST_PANAS_NA_Total + T6_DTS_Total + DEMO_Race + DEMO_Gender + Condition
+  FU_UPPS_NegativeUrgency_Total ~ 1 + POST_DTS_Total + FU_DASS_Total + FU_PANAS_NA_Total + POST_UPPS_NegativeUrgency_Total + DEMO_Race + DEMO_Gender + Condition
+  FU_DTS_Total ~ 1 + POST_UPPS_NegativeUrgency_Total + FU_DASS_Total + FU_PANAS_NA_Total + POST_DTS_Total + DEMO_Race + DEMO_Gender + Condition
   PRE_UPPS_NegativeUrgency_Total ~~ T1_DTS_Total
   MID_UPPS_NegativeUrgency_Total ~~ T6_DTS_Total
   POST_UPPS_NegativeUrgency_Total ~~ POST_DTS_Total
@@ -82,12 +82,12 @@ BUT now if we constrain the PANAS and DASS controls to average out the effect ac
 ```{r}
 #constrained model
 consmodel <- '
-  MID_UPPS_NegativeUrgency_Total ~ 1 + T1_DTS_Total + a*MID_DASS_Total + b*T6_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  T6_DTS_Total ~ 1 + PRE_UPPS_NegativeUrgency_Total + a*MID_DASS_Total + b*T6_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  POST_UPPS_NegativeUrgency_Total ~ 1 + T6_DTS_Total + a*POST_DASS_Total + b*POST_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  POST_DTS_Total ~ 1 + MID_UPPS_NegativeUrgency_Total + a*POST_DASS_Total + b*POST_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  FU_UPPS_NegativeUrgency_Total ~ 1 + POST_DTS_Total + a*FU_DASS_Total + b*FU_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
-  FU_DTS_Total ~ 1 + POST_UPPS_NegativeUrgency_Total + a*FU_DASS_Total + b*FU_PANAS_NA_Total + DEMO_Race + DEMO_Gender + Condition
+  MID_UPPS_NegativeUrgency_Total ~ 1 + T1_DTS_Total + a*MID_DASS_Total + b*T6_PANAS_NA_Total + + PRE_UPPS_NegativeUrgency_Total + DEMO_Race + DEMO_Gender + Condition
+  T6_DTS_Total ~ 1 + PRE_UPPS_NegativeUrgency_Total + a*MID_DASS_Total + b*T6_PANAS_NA_Total + T1_DTS_Total + DEMO_Race + DEMO_Gender + Condition
+  POST_UPPS_NegativeUrgency_Total ~ 1 + T6_DTS_Total + a*POST_DASS_Total + b*POST_PANAS_NA_Total + MID_UPPS_NegativeUrgency_Total + DEMO_Race + DEMO_Gender + Condition
+  POST_DTS_Total ~ 1 + MID_UPPS_NegativeUrgency_Total + a*POST_DASS_Total + b*POST_PANAS_NA_Total + T6_DTS_Total + DEMO_Race + DEMO_Gender + Condition
+  FU_UPPS_NegativeUrgency_Total ~ 1 + POST_DTS_Total + a*FU_DASS_Total + b*FU_PANAS_NA_Total + POST_UPPS_NegativeUrgency_Total + DEMO_Race + DEMO_Gender + Condition
+  FU_DTS_Total ~ 1 + POST_UPPS_NegativeUrgency_Total + a*FU_DASS_Total + b*FU_PANAS_NA_Total + POST_DTS_Total + DEMO_Race + DEMO_Gender + Condition
   PRE_UPPS_NegativeUrgency_Total ~~ T1_DTS_Total
   MID_UPPS_NegativeUrgency_Total ~~ T6_DTS_Total
   POST_UPPS_NegativeUrgency_Total ~~ POST_DTS_Total
