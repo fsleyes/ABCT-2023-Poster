@@ -3,9 +3,14 @@ library(lavaan)
 library(haven)
 
 raw_data <- read_sav("raw_data.sav")
-test <- raw_data %>% select(contains("DTS"))
+test <- raw_data %>% select(contains("DTS_Total"))
 
-df <- raw_data %>% select(contains(c("UPPS_NegativeUrgency_Total", "DTS_Total")))
+df <- raw_data %>% select(contains(c("UPPS_NegativeUrgency_Total")),
+                                   "T1_DTS_Total", "T6_DTS_Total",
+                                   "POST_DTS_Total", "FU_DTS_Total")
+#going to use T1 for PRE, T6 for MID in DTS measure
+
+model <-
 
 
 
