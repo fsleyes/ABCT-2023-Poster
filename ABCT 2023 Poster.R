@@ -3,14 +3,28 @@ library(lavaan)
 library(haven)
 
 raw_data <- read_sav("raw_data.sav")
-test <- raw_data %>% select(contains("DTS_Total"))
+test <- raw_data %>% select(contains("DASS"))
 
-df <- raw_data %>% select(contains(c("UPPS_NegativeUrgency_Total")),
-                                   "T1_DTS_Total", "T6_DTS_Total",
-                                   "POST_DTS_Total", "FU_DTS_Total")
+
+
+df <- raw_data %>% select(contains(c("UPPS_NegativeUrgency_Total",
+                                     "DASS")),
+                          "T1_DTS_Total", "T6_DTS_Total",
+                          "POST_DTS_Total", "FU_DTS_Total",
+                          "DEMO_Race", "DEMO_Gender",
+                          "T1_PANAS_NA_Total", "T6_PANAS_NA_Total",
+                          "POST_PANAS_NA_Total", "FU_PANAS_NA_Total",
+                          "Condition") %>%
+  mutate(PRE_DASS_Total = rowSums(across(PRE_DASS_Depression_Score:PRE_DASS_Stress_Score), na.rm = TRUE))
+
+
+
 #going to use T1 for PRE, T6 for MID in DTS measure
 
-model <-
+
+model <- '
+  PRE_UPPS_NegativeUrgency_Total ~ 1 + T1_DTS_Total + '
+
 
 
 
