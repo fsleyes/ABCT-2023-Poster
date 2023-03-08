@@ -41,7 +41,7 @@ model <- '
   POST_UPPS_NegativeUrgency_Total ~~ POST_DTS_Total
   FU_UPPS_NegativeUrgency_Total ~~ FU_DTS_Total '
 
-fitModel <- sem(model, data = df, missing = "ml.x")
+fitModel <- sem(model, data = df, missing = "ml.x", fixed.x = FALSE)
 summary(fitModel, fit.measures = T)
 
 
@@ -58,7 +58,7 @@ consmodel <- '
   POST_UPPS_NegativeUrgency_Total ~~ POST_DTS_Total
   FU_UPPS_NegativeUrgency_Total ~~ FU_DTS_Total '
 
-fitConsmodel <- sem(consmodel, data = df, missing = "ml.x")
+fitConsmodel <- sem(consmodel, data = df, missing = "ml.x", fixed.x = FALSE)
 summary(fitConsmodel, fit.measures = T)
 
 

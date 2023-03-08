@@ -72,7 +72,7 @@ model <- '
 
 running the model
 ```{r}
-fitModel <- sem(model, data = df, missing = "ml.x")
+fitModel <- sem(model, data = df, missing = "ml.x", fixed.x = FALSE)
 summary(fitModel, fit.measures = T)
 ```
 we can see that the only one that's marginally significant would be the UPPS at pre predicting DTS at mid
@@ -96,7 +96,7 @@ consmodel <- '
 
 we see that UPPS at PRE actually is significantly predicting DTS at mid
 ```{r}
-fitConsmodel <- sem(consmodel, data = df, missing = "ml.x")
+fitConsmodel <- sem(consmodel, data = df, missing = "ml.x", fixed.x = FALSE)
 summary(fitConsmodel, fit.measures = T)
 ```
 
