@@ -80,3 +80,4 @@ summary(fitConsmodel, fit.measures = T)
 # '
 
 
+write.csv(df, file = "cleaned CUD data.csv")
