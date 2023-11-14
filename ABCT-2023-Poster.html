@@ -375,11 +375,7 @@ model &lt;- &#39;
 ##     moments using EM; use the em.h1.iter.max= argument to increase the
 ##     number of iterations</code></pre>
 <pre class="r"><code>summary(fitModel, fit.measures = T)</code></pre>
-<pre><code>## Warning in lav_fit_cfi_lavobject(lavobject = object, fit.measures =
-## fit.measures, : lavaan WARNING: computation of robust CFI failed.</code></pre>
-<pre><code>## Warning in lav_fit_rmsea_lavobject(lavobject = object, fit.measures =
-## fit.measures, : lavaan WARNING: computation of robust RMSEA failed.</code></pre>
-<pre><code>## lavaan 0.6.14 ended normally after 344 iterations
+<pre><code>## lavaan 0.6-12 ended normally after 344 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -404,9 +400,6 @@ model &lt;- &#39;
 ## 
 ##   Comparative Fit Index (CFI)                    0.408
 ##   Tucker-Lewis Index (TLI)                      -0.096
-##                                                       
-##   Robust Comparative Fit Index (CFI)                NA
-##   Robust Tucker-Lewis Index (TLI)                   NA
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
@@ -415,21 +408,14 @@ model &lt;- &#39;
 ##                                                       
 ##   Akaike (AIC)                                3321.727
 ##   Bayesian (BIC)                              3548.072
-##   Sample-size adjusted Bayesian (SABIC)       3183.795
+##   Sample-size adjusted Bayesian (BIC)         3183.795
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
 ##   RMSEA                                          0.262
 ##   90 Percent confidence interval - lower         0.229
 ##   90 Percent confidence interval - upper         0.295
-##   P-value H_0: RMSEA &lt;= 0.050                    0.000
-##   P-value H_0: RMSEA &gt;= 0.080                    1.000
-##                                                       
-##   Robust RMSEA                                      NA
-##   90 Percent confidence interval - lower            NA
-##   90 Percent confidence interval - upper            NA
-##   P-value H_0: Robust RMSEA &lt;= 0.050                NA
-##   P-value H_0: Robust RMSEA &gt;= 0.080                NA
+##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
@@ -610,7 +596,7 @@ mid</p>
 ##     moments using EM; use the em.h1.iter.max= argument to increase the
 ##     number of iterations</code></pre>
 <pre class="r"><code>summary(fitConsmodel, fit.measures = T)</code></pre>
-<pre><code>## lavaan 0.6.14 ended normally after 351 iterations
+<pre><code>## lavaan 0.6-12 ended normally after 351 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -636,9 +622,6 @@ mid</p>
 ## 
 ##   Comparative Fit Index (CFI)                    0.324
 ##   Tucker-Lewis Index (TLI)                      -0.057
-##                                                       
-##   Robust Comparative Fit Index (CFI)             1.000
-##   Robust Tucker-Lewis Index (TLI)               -0.544
 ## 
 ## Loglikelihood and Information Criteria:
 ## 
@@ -647,21 +630,14 @@ mid</p>
 ##                                                       
 ##   Akaike (AIC)                                3339.148
 ##   Bayesian (BIC)                              3545.979
-##   Sample-size adjusted Bayesian (SABIC)       3213.106
+##   Sample-size adjusted Bayesian (BIC)         3213.106
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
 ##   RMSEA                                          0.257
 ##   90 Percent confidence interval - lower         0.227
 ##   90 Percent confidence interval - upper         0.288
-##   P-value H_0: RMSEA &lt;= 0.050                    0.000
-##   P-value H_0: RMSEA &gt;= 0.080                    1.000
-##                                                       
-##   Robust RMSEA                                   0.000
-##   90 Percent confidence interval - lower         0.000
-##   90 Percent confidence interval - upper         0.000
-##   P-value H_0: Robust RMSEA &lt;= 0.050             1.000
-##   P-value H_0: Robust RMSEA &gt;= 0.080             0.000
+##   P-value RMSEA &lt;= 0.05                          0.000
 ## 
 ## Standardized Root Mean Square Residual:
 ## 

@@ -16,6 +16,7 @@ test <- raw_data %>% select(contains("DASS"))
 
 df <- raw_data %>% select(contains(c("UPPS_NegativeUrgency_Total",
                                      "DASS")),
+                          "DEMO_Gender",
                           "T1_DTS_Total", "T6_DTS_Total",
                           "POST_DTS_Total", "FU_DTS_Total",
                           "DEMO_Race", "DEMO_Gender",
@@ -99,4 +100,6 @@ we see that UPPS at PRE actually is significantly predicting DTS at mid
 fitConsmodel <- sem(consmodel, data = df, missing = "ml.x", fixed.x = FALSE)
 summary(fitConsmodel, fit.measures = T)
 ```
+
+
 
